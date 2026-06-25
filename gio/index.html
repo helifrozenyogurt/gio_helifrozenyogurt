@@ -409,11 +409,11 @@
             <!-- Content -->
             <div class="text-center">
                 <h1 class="hero-heading mb-6">
-                    One free froyo cup for Residents' Day
+                    One <strong><em>free froyo</em></strong> cup for Residents' Day
                 </h1>
 
                 <p class="subheading mb-6">
-                    A little cold, a little sweet — happy Residents' Day!
+                    Our gift to you. Come back <span class="highlight">June 25th</span> to claim your coupon code.
                 </p>
 
                 <div id="claimButtonContainer">
@@ -481,7 +481,7 @@
                 <button type="submit" class="btn-primary">Get My Free Cup</button>
 
                 <p style="font-size: 12px; color: #999; line-height: 1.5; margin-top: 20px;">
-                    Valid through July 2, 2026. Limited to one free cup per apartment.
+                    Limited to one free cup per apartment. Coupon codes will be sent on June 25th and will be valid for one week.
                 </p>
             </form>
         </div>
@@ -581,9 +581,6 @@
         // Google Forms - Claims Form
         const CLAIM_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScuJeNz5xwPDkWX9hBqFyPaBV0wCf5IxqwB7SBuXdMpHwwGRg/formResponse';
 
-        // Apps Script — sends formatted confirmation email immediately on submission
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxDg0S5l9h8YN3bs0buT8rsFo3kTCFvhYq_2dQWusZjNDaewIwLizdWkA0JTnyMcUOdQ/exec';
-
         // Google Forms - Feedback Form
         const FEEDBACK_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfdZE4dZcW2EuP_e2PwzAIAOdNU1X1fu0-jY1BZ8DWP_BuUoQ/formResponse';
 
@@ -648,14 +645,7 @@
                 })
             });
 
-            // 2. Send formatted confirmation email via Apps Script
-            fetch(APPS_SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ name, email, apartment, phone })
-            }).catch(err => console.warn('Email script error:', err));
-
-            // 3. Show thank-you popup immediately
+            // 2. Show thank-you popup immediately
             showThankYouPopup('thankYouPopup', 'claimModal');
         }
 
